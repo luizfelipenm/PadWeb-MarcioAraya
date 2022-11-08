@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termômetro</title>
+
+</head>
+
+<body>
+    <h1>Termômetro</h1>
+
+    <p>Peso:
+        <input type="text" id="peso">
+    </p>
+    <p>Altura:
+        <input type="text" id="altura">
+    </p>
+    <p>Situação:<span id="situacao"></span></p>
+
+    <button onclick="verificaSituacao()">
+        Verificar
+    </button>
+
+    <script>
+
+    function verificaSituacao(){
+
+        let peso = parseFloat(document.getElementById("peso").value);
+        let altura = parseFloat(document.getElementById("altura").value);
+
+        let imc= peso / (altura * altura);
+        let situacao=""; 
+        let cor=""; 
+            if (<=17) {
+                situacao="Hipotemia";
+                cor="blue";
+            } else if (imc>17 && imc<=18.49) {
+                situacao="Normal";
+                cor="green";
+            } else if (imc>=18.50 && imc<=24.99) {
+                situacao="Febre"
+                cor="yellow"
+            } else if (imc>=25 && imc<=29.99) {
+                situacao="Febre alta"
+                cor="orange"
+            } else if (imc>=30 && imc<=34.99) {
+                situacao="Hipertermia";
+                cor="red";
+            }
+        document.getElementById("situacao").innerHTML = situacao;
+        document.getElementById("situacao").style.color = cor; // muda cor da fonte
+    }
+
+    </script>
+</body>
+</html>
